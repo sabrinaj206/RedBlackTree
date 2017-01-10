@@ -2,7 +2,6 @@ public class RedBlackTree {
     enum Color {RED, BLACK}
 
     RBNode root;
-    RBNode potato;
 
     void insert(int value) {
         RBNode insertNode = BSTInsert(value, root);
