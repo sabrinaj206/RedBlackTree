@@ -3,6 +3,11 @@ public class RedBlackTree {
 
     RBNode root;
 
+    void clear(){
+        root = null;
+    }
+
+
     void insert(int value) {
         RBNode insertNode = BSTInsert(value, root);
         rotate(insertNode);
@@ -191,7 +196,7 @@ public class RedBlackTree {
         }
     }
 
-    String print() {
+    public String toString() {
         return pre(0, "", root);
     }
 
