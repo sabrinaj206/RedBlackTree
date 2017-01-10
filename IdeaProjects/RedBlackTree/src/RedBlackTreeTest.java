@@ -3,8 +3,6 @@ import org.junit.Test;
 
 public class RedBlackTreeTest {
     RedBlackTree RBT;
-    RedBlackTree potato;
-
     @Before
     public void setUp() throws Exception {
         RBT = new RedBlackTree();
