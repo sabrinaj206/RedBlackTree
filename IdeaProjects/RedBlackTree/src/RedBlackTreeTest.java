@@ -10,7 +10,7 @@ public class RedBlackTreeTest {
         RBT = new RedBlackTree();
     }
 
-
+    @Test
     public void Insert() {
         RBT.insert(878);
         RBT.insert(538);
