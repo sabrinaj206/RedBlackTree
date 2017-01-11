@@ -3,7 +3,7 @@ public class RedBlackTree {
 
     RBNode root;
 
-    void clear(){
+    void clear() {
         root = null;
     }
 
@@ -64,7 +64,7 @@ public class RedBlackTree {
                         rotateRight(node);
                         node.setColor(Color.BLACK);
                         node.right.setColor(Color.RED);
-                    } else if (!isRightChild(node) && isRightChild(node.parent)){
+                    } else if (!isRightChild(node) && isRightChild(node.parent)) {
                         rotateRight(node);
                         rotateLeft(node);
                         node.setColor(Color.BLACK);
@@ -78,6 +78,7 @@ public class RedBlackTree {
                         node.parent.parent.setColor(Color.RED);
                     }
                     setUncleColor(node, Color.BLACK);
+                    rotate(node.parent.parent);
                 }
             }
         }
@@ -214,6 +215,38 @@ public class RedBlackTree {
         return output;
     }
 
+    public boolean hasBlackRoot() {
+        if (root.color.equals(Color.BLACK)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasNoDoubleReds() {
+        if (root != null) {
+            return checkDoubleReds(root);
+        }
+        return false;
+    }
+
+    private boolean checkDoubleReds(RBNode node) {
+        if (node.left != null) {
+            if (node.left.color.equals(Color.RED) && node.color.equals(Color.RED)) {
+                return false;
+            } else {
+                return checkDoubleReds(node.left);
+            }
+        }
+        if (node.right != null) {
+            if (node.right.color.equals(Color.RED) && node.color.equals(Color.RED)) {
+                return false;
+            } else {
+                return checkDoubleReds(node.right);
+            }
+        }
+        return true;
+    }
+
     public class RBNode {
         Color color;
         RBNode left;
@@ -230,7 +263,7 @@ public class RedBlackTree {
             this.color = color;
         }
 
-        String print() {
+        public String toString() {
             String output = "Value: " + value + "\nColor: " + color;
             if (left != null) {
                 output += "\nLeft: " + left.value;
